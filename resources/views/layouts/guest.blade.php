@@ -8,18 +8,20 @@
     <title>Evoting Web - {{ $title }}</title>
 
     <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
-    <div class="font-sans text-gray-900 antialiased">
+    <div class="text-gray-900 antialiased">
         <nav class="flex items-center h-20 px-10 justify-between bg-gray-200">
             {{-- logo --}}
             <div>
                 <a href="{{ route('welcome') }}">
-                    <img src={{ asset('assets/logo/evoting.png') }} alt="logo" class="w-32">
+                    <x-application-logo class="w-32" />
                 </a>
             </div>
             {{-- nav-link --}}
