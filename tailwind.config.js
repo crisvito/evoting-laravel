@@ -13,6 +13,9 @@ module.exports = {
             fontFamily: {
                 sans: ["Poppins", ...defaultTheme.fontFamily.sans],
             },
+            blur: {
+                xs: "0.5px",
+            },
         },
     },
 
