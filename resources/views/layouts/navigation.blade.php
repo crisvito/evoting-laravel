@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+{{-- <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -16,7 +16,7 @@
                         {{ __('Welcome') }}
                     </x-nav-link>
                     @can('isAdmin')
-                        <x-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
+                        <x-nav-link :href="route('admin.dashboard.index.index')" :active="request()->routeIs('admin.dashboard.index.index')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
                     @endcan
@@ -85,7 +85,7 @@
                 {{ __('Welcome') }}
             </x-responsive-nav-link>
             @can('isAdmin')
-                <x-responsive-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
+                <x-responsive-nav-link :href="route('admin.dashboard.index.index')" :active="request()->routeIs('admin.dashboard.index.index')">
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
             @endcan
@@ -117,4 +117,28 @@
             </div>
         </div>
     </div>
-</nav>
+</nav> --}}
+
+<div class="w-56 h-full bg-white fixed border-r border-zinc-400 p-6 flex flex-col">
+
+    <div class="shrink-0 h-14 flex w-32 items-center justify-end mb-5">
+        @can('isAdmin')
+            <a href="{{ route('admin.dashboard.index') }}">
+                <x-application-logo class="block w-auto fill-current text-gray-600" />
+            </a>
+        @endcan
+        @can('isWarga')
+            <a href="{{ route('warga.dashboard.index') }}">
+                <x-application-logo class="block w-auto fill-current text-gray-600" />
+            </a>
+        @endcan
+    </div>
+
+    @can('isAdmin')
+        @include('templates.nav-admin')
+    @endcan
+
+    @can('isWarga')
+        @include('templates.nav-warga')
+    @endcan
+</div>
