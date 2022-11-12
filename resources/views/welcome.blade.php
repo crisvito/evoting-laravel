@@ -32,17 +32,36 @@
         </div>
 
         {{-- more --}}
-        <div class="w-10/12">
-            <div class="w-3/5">
-                <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, illum totam! Porro ea, laudantium,
-                    tenetur magni animi itaque obcaecati quas adipisci cum hic aperiam perspiciatis minus. Corrupti qui
-                    vitae voluptatibus?. Jika Ingin Voting Login terlebih dahulu</h1>
-                <span class="text-blue-900">
-                    <a href="login">Login</a> |
-                    <a href="register">Register</a>
-                </span>
+        @auth
+            <div class="w-10/12">
+                <div class="w-3/5">
+                    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, illum totam! Porro ea, laudantium,
+                        tenetur magni animi itaque obcaecati quas adipisci cum hic aperiam perspiciatis minus. Corrupti qui
+                        vitae voluptatibus?. Voting sesuai pilihan kalian di</h1>
+                    <span class="text-blue-900">
+                        @can('isAdmin')
+                            <a href={{ route('admin.dashboard.index') }}>Dashboard</a>
+                        @endcan
+
+                        @can('isWarga')
+                            <a href={{ route('warga.dashboard.index') }}>Dashboard</a>
+                        @endcan
+                    </span>
+                </div>
             </div>
-        </div>
+        @else
+            <div class="w-10/12">
+                <div class="w-3/5">
+                    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, illum totam! Porro ea, laudantium,
+                        tenetur magni animi itaque obcaecati quas adipisci cum hic aperiam perspiciatis minus. Corrupti qui
+                        vitae voluptatibus?. Jika Ingin Voting Login terlebih dahulu</h1>
+                    <span class="text-blue-900">
+                        <a href="login">Login</a> |
+                        <a href="register">Register</a>
+                    </span>
+                </div>
+            </div>
+        @endauth
     </div>
 
 </x-guest-layout>

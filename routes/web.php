@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\admin\dashboard\AdminDashboardController;
+use App\Http\Controllers\admin\voters\AdminVotersController;
 use App\Http\Controllers\warga\dashboard\WargaDashboardController;
 use App\Http\Controllers\public\PublicController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +25,13 @@ Route::get('/', [PublicController::class, 'welcome'])->name('welcome');
 
 Route::group(['middleware' => 'auth', 'middleware' => 'can:isAdmin'], function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-        Route::resource('dashboard', AdminDashboardController::class);
+        Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard.index');
+        Route::get('dashboard/voters', [AdminVotersController::class, 'index'])->name('dashboard.voters');
+
+
+
+        Route::get('dashboard/voters/add', [AdminVotersController::class, 'create'])->name('add.voters');
+        Route::post('dashboard/voters/add', [AdminVotersController::class, 'store'])->name('add.voters');
     });
 });
 
