@@ -7,7 +7,7 @@
     </li>
     <li>
         <i class="fa-solid fa-users"></i>
-        <x-nav-link :href="route('admin.dashboard.voters')" :active="request()->routeIs('admin.dashboard.voters')">
+        <x-nav-link :href="route('admin.voters.index')" :active="request()->routeIs('admin.voters.index')">
             {{ __('Voters') }}
         </x-nav-link>
     </li>

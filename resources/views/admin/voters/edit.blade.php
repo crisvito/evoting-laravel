@@ -3,10 +3,10 @@
         <div class="mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <h1 class="text-xl uppercase mb-5">Menambah Data Pemilih</h1>
+                    <h1 class="text-xl uppercase mb-5">Edit Data Pemilih</h1>
 
                     <div class="w-1/2">
-                        <form method="POST" action="{{ route('admin.voters.store') }}">
+                        <form method="POST" action={{ "admin/dashboard/voters/$user->username" }}>
                             @csrf
 
                             <!-- Name -->
@@ -14,17 +14,17 @@
                                 <x-input-label for="name" :value="__('Name')" />
 
                                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                    :value="old('name')" required autofocus />
+                                    :value="old('name', $user->name)" required />
 
                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
-
+                            {{-- value="{{ old('title', $story->title) }}" --}}
                             <!-- Username -->
                             <div class="mt-4">
                                 <x-input-label for="username" :value="__('Username')" />
 
                                 <x-text-input id="username" class="block mt-1 w-full" type="text" name="username"
-                                    :value="old('username')" autofocus required />
+                                    :value="old('username', $user->username)" required />
 
                                 <x-input-error :messages="$errors->get('username')" class="mt-2" />
                             </div>
@@ -34,7 +34,7 @@
                                 <x-input-label for="email" :value="__('Email')" />
 
                                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
-                                    :value="old('email')" required />
+                                    :value="old('email', $user->email)" required />
 
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
@@ -64,7 +64,7 @@
                                     {{ __('Cancel') }}
                                 </x-danger-button>
                                 <x-primary-button class="ml-4">
-                                    {{ __('Tambah') }}
+                                    {{ __('Edit') }}
                                 </x-primary-button>
                             </div>
                         </form>

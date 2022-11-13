@@ -6,38 +6,43 @@
                     <h1 class="text-xl uppercase">Data Pemilih</h1>
 
                     <div class="my-5">
-                        <a href={{ route('admin.add.voters') }} class="px-5 py-2 rounded-lg bg-blue-300">Tambah
-                            Pemilih</a>
+                        <x-secondary-button :href="route('admin.voters.create')">
+                            Tambah Pemilih
+                        </x-secondary-button>
                     </div>
                     <table class="table-fixed">
                         <thead>
-                            <tr>
-                                <th class="bg-blue-100 px-4">#</th>
-                                <th class="bg-blue-100 px-4">Username</th>
-                                <th class="bg-blue-100 px-4">Nama</th>
-                                <th class="bg-blue-100 px-4">Email</th>
-                                <th class="bg-blue-100 px-4">Action</th>
+                            <tr class="header-table">
+                                <th>#</th>
+                                <th>Username</th>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="body-table">
                             @foreach ($voters as $voter)
                                 <tr>
-                                    <td class="border px-8 py-4">
+                                    <td class="index-voters">
                                         {{ $loop->iteration }}
                                     </td>
-                                    <td class="border px-8 py-4">
+                                    <td>
                                         {{ $voter->username }}
                                     </td>
-                                    <td class="border px-8 py-4">
+                                    <td>
                                         {{ $voter->name }}
                                     </td>
-                                    <td class="border px-8 py-4">
+                                    <td>
                                         {{ $voter->email }}
                                     </td>
-                                    <td class="border px-8 py-4">
+                                    <td>
                                         <span class="flex gap-2 text-blue-800">
-                                            <a href="">Delete</a>|
-                                            <a href="">Edit</a>
+                                            <x-secondary-button :href="'voters/' . $voter->username . '/edit'">
+                                                Edit
+                                            </x-secondary-button>|
+                                            <x-danger-button :href="'voters/' . $voter->username . '/edit'">
+                                                Delete
+                                            </x-danger-button>
                                         </span>
                                     </td>
                                 </tr>

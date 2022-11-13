@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\admin\voters;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
 class AdminVotersController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('can:isAdmin');
-    }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return view('admin.voters.index', [
@@ -24,12 +23,24 @@ class AdminVotersController extends Controller
         ]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('admin.voters.create', [
-            'title' => 'AddVoters'
+            'title' => 'Add Voters'
         ]);
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -39,6 +50,7 @@ class AdminVotersController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+
         User::create([
             'name' => $request->name,
             'username' => $request->username,
@@ -46,6 +58,54 @@ class AdminVotersController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect('admin/dashboard');
+        return redirect('admin/dashboard/voters');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\user  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function show(user $user)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\user  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(user $user)
+    {
+        return view('admin.voters.edit', [
+            'title' => 'Edit Voters',
+            'user' => $user
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\user  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, user $user)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\user  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(user $user)
+    {
+        //
     }
 }

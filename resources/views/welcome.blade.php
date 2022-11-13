@@ -57,7 +57,7 @@
                         vitae voluptatibus?. Jika Ingin Voting Login terlebih dahulu</h1>
                     <span class="text-blue-900">
                         <a href="login">Login</a> |
-                        <a href="register">Register</a>
+                        <a href="register">Daftar</a>
                     </span>
                 </div>
             </div>

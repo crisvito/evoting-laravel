@@ -26,12 +26,10 @@ Route::get('/', [PublicController::class, 'welcome'])->name('welcome');
 Route::group(['middleware' => 'auth', 'middleware' => 'can:isAdmin'], function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard.index');
-        Route::get('dashboard/voters', [AdminVotersController::class, 'index'])->name('dashboard.voters');
 
-
-
-        Route::get('dashboard/voters/add', [AdminVotersController::class, 'create'])->name('add.voters');
-        Route::post('dashboard/voters/add', [AdminVotersController::class, 'store'])->name('add.voters');
+        Route::resource('dashboard/voters', AdminVotersController::class)->scoped([
+            'voter' => 'username',
+        ]);
     });
 });
 

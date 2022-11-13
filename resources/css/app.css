@@ -9,4 +9,13 @@
     .navbar li i {
         @apply text-xl w-7;
     }
+    .header-table th {
+        @apply bg-slate-900 text-white px-4 py-2 text-xs uppercase;
+    }
+    .body-table tr td {
+        @apply border border-slate-300 px-8 py-3;
+    }
+    .body-table tr .index-voters {
+        @apply font-bold;
+    }
 }

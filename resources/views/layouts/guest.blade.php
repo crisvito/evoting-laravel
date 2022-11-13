@@ -43,7 +43,7 @@
                 @else
                     <div class="flex items-center gap-1">
                         <a href="{{ route('register') }}"
-                            class="font-medium text-gray-700 dark:text-gray-500 hover:bg-gray-500 hover:rounded hover:text-white py-1 px-7">Register</a>
+                            class="font-medium text-gray-700 dark:text-gray-500 hover:bg-gray-500 hover:rounded hover:text-white py-1 px-7">Daftar</a>
 
                         <a href="{{ route('login') }}"
                             class="rounded border bg-indigo-600 py-1 px-8 text-center font-medium text-white hover:bg-indigo-700">Log
