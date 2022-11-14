@@ -5,6 +5,12 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h1 class="text-xl uppercase">Data Pemilih</h1>
 
+                    @if (session()->has('success'))
+                        <div class="my-3 w-3/5 px-4 py-4 rounded text-slate-800 bg-slate-300" role="alert">
+                            {!! session('success') !!}
+                        </div>
+                    @endif
+
                     <div class="my-5">
                         <x-secondary-button :href="route('admin.voters.create')">
                             Tambah Pemilih
@@ -40,9 +46,16 @@
                                             <x-secondary-button :href="'/admin/dashboard/voters/' . $voter->username . '/edit'">
                                                 Edit
                                             </x-secondary-button>|
-                                            <x-danger-button :href="'voters/' . $voter->username . '/edit'">
-                                                Delete
-                                            </x-danger-button>
+                                            <form method="POST"
+                                                action="/admin/dashboard/voters/{{ $voter->username }}">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit"
+                                                    class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150"
+                                                    onclick="return confirm('Yakin menghapus Data?')">
+                                                    Delete
+                                                </button>
+                                            </form>
                                         </span>
                                     </td>
                                 </tr>

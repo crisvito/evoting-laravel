@@ -58,10 +58,10 @@ class AdminVotersController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect('admin/dashboard/voters');
+        return redirect('admin/dashboard/voters')->with('success', 'Berhasil menambahkan data pemilih <b>' . $request->name . '</b>');
     }
 
-    /**
+    /** 
      * Display the specified resource.
      *
      * @param  \App\Models\user  $user
@@ -75,14 +75,14 @@ class AdminVotersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\user  $user
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(user $user)
+    public function edit(User $voter)
     {
         return view('admin.voters.edit', [
             'title' => 'Edit Voters',
-            'user' => $user
+            'voter' => $voter
         ]);
     }
 
@@ -90,22 +90,37 @@ class AdminVotersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\user  $user
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user $user)
+    public function update(Request $request, User $voter)
     {
-        //
+        $rules = [
+            'name' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ];
+
+        if ($request->username != $voter->username) {
+            $rules['username'] = 'required|string|min:8|max:255|unique:users';
+        }
+        if ($request->email != $voter->email) {
+            $rules['email'] = 'required|string|email|max:255|unique:users';
+        }
+        $validatedData = $request->validate($rules);
+
+        User::where('id', $voter->id)->update($validatedData);
+        return redirect('/admin/dashboard/voters')->with('success', 'Berhasil Mengubah data pemilih <b>' . $request->name . '</b>');;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\user  $user
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user $user)
+    public function destroy(User $voter)
     {
-        //
+        User::destroy($voter->id);
+        return redirect('/admin/dashboard/voters')->with('success', 'Berhasil Menghapus data pemilih <b>' . $voter->name . '</b>');
     }
 }

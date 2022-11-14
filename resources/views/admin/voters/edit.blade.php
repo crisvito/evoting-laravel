@@ -6,25 +6,26 @@
                     <h1 class="text-xl uppercase mb-5">Edit Data Pemilih</h1>
 
                     <div class="w-1/2">
-                        <form method="POST" action={{ "admin/dashboard/voters/$user->username" }}>
+                        <form method="POST" action={{ "/admin/dashboard/voters/$voter->username" }}>
                             @csrf
+                            @method('put')
 
                             <!-- Name -->
                             <div>
                                 <x-input-label for="name" :value="'Name'" />
 
                                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                    :value="old('name', $user->name)" required />
+                                    :value="old('name', $voter->name)" required />
 
                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
-                            {{-- value="{{ old('title', $story->title) }}" --}}
+
                             <!-- Username -->
                             <div class="mt-4">
                                 <x-input-label for="username" :value="'Username'" />
 
                                 <x-text-input id="username" class="block mt-1 w-full" type="text" name="username"
-                                    :value="old('username', $user->username)" required />
+                                    :value="old('username', $voter->username)" required />
 
                                 <x-input-error :messages="$errors->get('username')" class="mt-2" />
                             </div>
@@ -34,7 +35,7 @@
                                 <x-input-label for="email" :value="'Email'" />
 
                                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
-                                    :value="old('email', $user->email)" required />
+                                    :value="old('email', $voter->email)" required />
 
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
