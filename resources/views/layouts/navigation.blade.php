@@ -123,12 +123,12 @@
 
     <div class="shrink-0 h-14 flex w-32 items-center justify-end mb-5">
         @can('isAdmin')
-            <a href="{{ route('admin.dashboard.index') }}">
+            <a href="/admin/dashboard">
                 <x-application-logo class="block w-auto fill-current text-gray-600" />
             </a>
         @endcan
         @can('isWarga')
-            <a href="{{ route('warga.dashboard.index') }}">
+            <a href="/dashboard">
                 <x-application-logo class="block w-auto fill-current text-gray-600" />
             </a>
         @endcan

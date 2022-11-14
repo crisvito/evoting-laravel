@@ -20,7 +20,7 @@
         <nav class="flex items-center h-20 px-10 justify-between bg-gray-200">
             {{-- logo --}}
             <div>
-                <a href="{{ route('welcome') }}">
+                <a href="/welcome">
                     <x-application-logo class="w-32" />
                 </a>
             </div>
@@ -28,12 +28,12 @@
             <div class="flex gap-2 items-center">
                 @auth
                     @can('isAdmin')
-                        <a href="{{ url('admin/dashboard') }}" class="hover:font-bold">Dashboard</a>
+                        <a href="/admin/dashboard" class="hover:font-bold">Dashboard</a>
                     @endcan
                     @can('isWarga')
-                        <a href="{{ url('/dashboard') }}" class="hover:font-bold">Dashboard</a>
+                        <a href="/dashboard" class="hover:font-bold">Dashboard</a>
                     @endcan
-                    <form method="POST" action="{{ route('logout') }}" class="ml-4">
+                    <form method="POST" action="/logout" class="ml-4">
                         @csrf
                         <button type="submit"
                             class="rounded border bg-indigo-600 py-1 px-8 text-center font-medium text-white hover:bg-indigo-700">
@@ -42,10 +42,10 @@
                     </form>
                 @else
                     <div class="flex items-center gap-1">
-                        <a href="{{ route('register') }}"
+                        <a href="/register"
                             class="font-medium text-gray-700 dark:text-gray-500 hover:bg-gray-500 hover:rounded hover:text-white py-1 px-7">Daftar</a>
 
-                        <a href="{{ route('login') }}"
+                        <a href="/login"
                             class="rounded border bg-indigo-600 py-1 px-8 text-center font-medium text-white hover:bg-indigo-700">Log
                             in</a>
                     </div>

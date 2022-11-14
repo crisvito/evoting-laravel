@@ -40,11 +40,11 @@
                         vitae voluptatibus?. Voting sesuai pilihan kalian di</h1>
                     <span class="text-blue-900">
                         @can('isAdmin')
-                            <a href={{ route('admin.dashboard.index') }}>Dashboard</a>
+                            <a href="/admin/dashboard">Dashboard</a>
                         @endcan
 
                         @can('isWarga')
-                            <a href={{ route('warga.dashboard.index') }}>Dashboard</a>
+                            <a href="/dashboard">Dashboard</a>
                         @endcan
                     </span>
                 </div>

@@ -37,7 +37,7 @@
                                     </td>
                                     <td>
                                         <span class="flex gap-2 text-blue-800">
-                                            <x-secondary-button :href="'voters/' . $voter->username . '/edit'">
+                                            <x-secondary-button :href="'/admin/dashboard/voters/' . $voter->username . '/edit'">
                                                 Edit
                                             </x-secondary-button>|
                                             <x-danger-button :href="'voters/' . $voter->username . '/edit'">

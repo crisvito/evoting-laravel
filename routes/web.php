@@ -34,8 +34,8 @@ Route::group(['middleware' => 'auth', 'middleware' => 'can:isAdmin'], function (
 });
 
 Route::group(['middleware' => 'auth', 'middleware' => 'can:isWarga'], function () {
-    Route::group(['as' => 'warga.dashboard.'], function () {
-        Route::get('dashboard', [WargaDashboardController::class, 'index'])->name('index');
+    Route::group(['as' => 'warga.'], function () {
+        Route::get('dashboard', [WargaDashboardController::class, 'index'])->name('dashboard.index');
     });
 });
 
