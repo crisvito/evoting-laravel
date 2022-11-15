@@ -19,7 +19,7 @@ class AdminVotersController extends Controller
     {
         return view('admin.voters.index', [
             'title' => 'Voters',
-            'voters' => User::all()->where('akses_id', self::WARGA),
+            'voters' => User::with('akses')->where('akses_id', self::WARGA)->get(),
         ]);
     }
 

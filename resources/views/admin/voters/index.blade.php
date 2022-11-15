@@ -20,6 +20,7 @@
                         <thead>
                             <tr class="header-table">
                                 <th>#</th>
+                                <th>Akses</th>
                                 <th>Nik</th>
                                 <th>Nama</th>
                                 <th>Email</th>
@@ -32,6 +33,9 @@
                                     <td class="index-voters">
                                         {{ $loop->iteration }}
                                     </td>
+                                    <td class="index-voters">
+                                        {{ $voter->akses->nama }}
+                                    </td>
                                     <td>
                                         {{ $voter->nik }}
                                     </td>
@@ -42,7 +46,7 @@
                                         {{ $voter->email }}
                                     </td>
                                     <td>
-                                        <span class="flex gap-2 text-blue-800">
+                                        <span class="flex items-center gap-2 text-blue-800">
                                             <x-secondary-button :href="'/admin/dashboard/voters/' . $voter->nik . '/edit'">
                                                 Edit
                                             </x-secondary-button>|
