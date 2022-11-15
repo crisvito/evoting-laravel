@@ -19,14 +19,14 @@
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
-            <!-- Username -->
+            <!-- Nik -->
             <div class="mt-4">
-                <x-input-label for="username" :value="__('Username')" />
+                <x-input-label for="nik" :value="__('NIK')" />
 
-                <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')"
+                <x-text-input id="nik" class="block mt-1 w-full" type="text" name="nik" :value="old('nik')"
                     autofocus required />
 
-                <x-input-error :messages="$errors->get('username')" class="mt-2" />
+                <x-input-error :messages="$errors->get('nik')" class="mt-2" />
             </div>
 
             <!-- Email Address -->

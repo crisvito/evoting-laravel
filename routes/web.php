@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth', 'middleware' => 'can:isAdmin'], function (
         Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard.index');
 
         Route::resource('dashboard/voters', AdminVotersController::class)->scoped([
-            'voter' => 'username'
+            'voter' => 'nik'
         ]);
     });
 });

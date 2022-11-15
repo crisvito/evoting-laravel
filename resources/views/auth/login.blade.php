@@ -12,9 +12,9 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <!-- Email Address and Username-->
+            <!-- Email Address and Nik-->
             <div>
-                <x-input-label for="login" :value="__('Email or Username')" />
+                <x-input-label for="login" :value="__('Email or NIK')" />
 
                 <x-text-input id="login" class="block mt-1 w-full" type="text" name="login" :value="old('login')"
                     required autofocus />

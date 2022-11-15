@@ -31,7 +31,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'login' => ['required', 'string'],
+            'login' => ['required'],
             'password' => ['required', 'string'],
         ];
     }
@@ -54,8 +54,10 @@ class LoginRequest extends FormRequest
         //         'email' => trans('auth.failed'),
         //     ]);
         // }
+
+
         $user = User::where('email', $this->login)
-            ->orWhere('username', $this->login)
+            ->orWhere('nik', $this->login)
             ->first();
 
         if (!$user || !Hash::check($this->password, $user->password)) {

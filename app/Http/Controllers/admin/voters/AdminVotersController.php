@@ -43,20 +43,22 @@ class AdminVotersController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'min:8', 'max:255', 'unique:users'],
+            'nik' => ['required', 'integer', 'min:8', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $validatedData['password'] = Hash::make($request->password);
+        User::create($validatedData);
 
-        User::create([
-            'name' => $request->name,
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        // User::create([
+        //     'name' => $request->name,
+        //     'username' => $request->username,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        // ]);
 
         return redirect('admin/dashboard/voters')->with('success', 'Berhasil menambahkan data pemilih <b>' . $request->name . '</b>');
     }

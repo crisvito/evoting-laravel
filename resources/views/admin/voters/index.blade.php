@@ -20,7 +20,7 @@
                         <thead>
                             <tr class="header-table">
                                 <th>#</th>
-                                <th>Username</th>
+                                <th>Nik</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Action</th>
@@ -33,7 +33,7 @@
                                         {{ $loop->iteration }}
                                     </td>
                                     <td>
-                                        {{ $voter->username }}
+                                        {{ $voter->nik }}
                                     </td>
                                     <td>
                                         {{ $voter->name }}
@@ -43,11 +43,10 @@
                                     </td>
                                     <td>
                                         <span class="flex gap-2 text-blue-800">
-                                            <x-secondary-button :href="'/admin/dashboard/voters/' . $voter->username . '/edit'">
+                                            <x-secondary-button :href="'/admin/dashboard/voters/' . $voter->nik . '/edit'">
                                                 Edit
                                             </x-secondary-button>|
-                                            <form method="POST"
-                                                action="/admin/dashboard/voters/{{ $voter->username }}">
+                                            <form method="POST" action="/admin/dashboard/voters/{{ $voter->nik }}">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit"

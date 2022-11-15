@@ -6,7 +6,7 @@
                     <h1 class="text-xl uppercase mb-5">Edit Data Pemilih</h1>
 
                     <div class="w-1/2">
-                        <form method="POST" action={{ "/admin/dashboard/voters/$voter->username" }}>
+                        <form method="POST" action={{ "/admin/dashboard/voters/$voter->nik" }}>
                             @csrf
                             @method('put')
 
@@ -20,14 +20,14 @@
                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
 
-                            <!-- Username -->
+                            <!-- Nik -->
                             <div class="mt-4">
-                                <x-input-label for="username" :value="'Username'" />
+                                <x-input-label for="nik" :value="'Nik'" />
 
-                                <x-text-input id="username" class="block mt-1 w-full" type="text" name="username"
-                                    :value="old('username', $voter->username)" required />
+                                <x-text-input id="nik" class="block mt-1 w-full" type="text" name="nik"
+                                    :value="old('nik', $voter->nik)" required />
 
-                                <x-input-error :messages="$errors->get('username')" class="mt-2" />
+                                <x-input-error :messages="$errors->get('nik')" class="mt-2" />
                             </div>
 
                             <!-- Email Address -->

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('akses_id')->default(2);
             $table->string('name');
-            $table->string('username')->unique();
+            $table->string('nik')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
