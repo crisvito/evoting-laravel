@@ -7,8 +7,7 @@ use App\Models\Kandidat;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-
-class AdminKandidatController extends Controller
+class AdminCandidateController extends Controller
 {
     /**
      * Display a listing of the resource.
