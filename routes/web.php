@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\dashboard\AdminDashboardController;
+use App\Http\Controllers\admin\kandidat\AdminKandidatController;
 use App\Http\Controllers\admin\voters\AdminVotersController;
 use App\Http\Controllers\warga\dashboard\WargaDashboardController;
 use App\Http\Controllers\public\PublicController;
@@ -30,6 +31,7 @@ Route::group(['middleware' => 'auth', 'middleware' => 'can:isAdmin'], function (
         Route::resource('dashboard/voters', AdminVotersController::class)->scoped([
             'voter' => 'nik'
         ]);
+        Route::resource('dashboard/candidates', AdminKandidatController::class);
     });
 });
 

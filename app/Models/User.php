@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Akses;
-use App\Models\Kandidat;
+use App\Models\Vote;
 
 class User extends Authenticatable
 {
@@ -48,5 +48,10 @@ class User extends Authenticatable
     public function akses()
     {
         return $this->belongsTo(Akses::class);
+    }
+
+    public function vote()
+    {
+        return $this->belongsTo(Vote::class);
     }
 }

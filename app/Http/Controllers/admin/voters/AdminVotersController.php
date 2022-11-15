@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin\voters;
 
 use App\Http\Controllers\Controller;
-use App\Models\user;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
