@@ -3,7 +3,7 @@
         <div class="mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <h1 class="text-xl uppercase">Data Pemilih</h1>
+                    <h1 class="text-xl uppercase">Data Kandidat</h1>
 
                     @if (session()->has('success'))
                         <div class="my-3 w-3/5 px-4 py-4 rounded text-slate-800 bg-slate-300" role="alert">
@@ -12,38 +12,40 @@
                     @endif
 
                     <div class="my-5">
-                        <x-secondary-button :href="route('admin.voters.create')">
-                            Tambah Pemilih
+                        <x-secondary-button :href="route('admin.candidates.create')">
+                            Tambah Kandidat
                         </x-secondary-button>
                     </div>
                     <table class="table-fixed">
                         <thead>
-                            <tr class="header-table">
+                            <tr class="header-table tracking-widest">
                                 <th>#</th>
-                                <th>Akses</th>
-                                <th>Nik</th>
-                                <th>Nama</th>
-                                <th>Email</th>
+                                <th>Foto</th>
+                                <th>Nama Ketua</th>
+                                <th>Nama Wakil</th>
+                                <th>Profile</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody class="body-table">
+                        <tbody class="body-table candidates">
                             @foreach ($candidates as $candidate)
                                 <tr>
                                     <td class="index-candidates">
                                         {{ $loop->iteration }}
                                     </td>
-                                    <td class="index-candidates">
-                                        {{ $candidate->akses->nama }}
+                                    <td class="w-28">
+                                        <img src="/assets/kandidatFoto/{{ $candidate->foto }}" alt="err">
                                     </td>
                                     <td>
-                                        {{ $candidate->nik }}
+                                        {{ $candidate->nama_ketua }}
                                     </td>
                                     <td>
-                                        {{ $candidate->name }}
+                                        {{ $candidate->nama_wakil }}
                                     </td>
                                     <td>
-                                        {{ $candidate->email }}
+                                        {{ $candidate->excerpt }}
+                                        <a href="/admin/dashboard/candidates/{{ $candidate->id }}"
+                                            class="text-blue-600 underline pl-2">detail</a>
                                     </td>
                                     <td>
                                         <span class="flex items-center gap-2 text-blue-800">

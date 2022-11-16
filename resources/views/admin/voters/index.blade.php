@@ -18,7 +18,7 @@
                     </div>
                     <table class="table-fixed">
                         <thead>
-                            <tr class="header-table">
+                            <tr class="header-table tracking-widest">
                                 <th>#</th>
                                 <th>Akses</th>
                                 <th>Nik</th>

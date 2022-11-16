@@ -15,7 +15,13 @@
     .body-table tr td {
         @apply border border-slate-300 px-8 py-3;
     }
+    .body-table.candidates tr td {
+        @apply border border-slate-300 px-4 py-5;
+    }
     .body-table tr .index-voters {
+        @apply font-bold;
+    }
+    .body-table tr .index-candidates {
         @apply font-bold;
     }
 }

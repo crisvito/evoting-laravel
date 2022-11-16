@@ -3,7 +3,7 @@
         <div class="mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <h1 class="text-xl uppercase mb-5">Menambah Data Pemilih</h1>
+                    <h1 class="text-xl font-semibold uppercase mb-5">Menambah Data Pemilih</h1>
 
                     <div class="w-1/2">
                         <form method="POST" action="{{ route('admin.voters.store') }}">
