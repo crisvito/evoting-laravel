@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('nama_ketua');
             $table->string('nama_wakil');
             $table->string('foto');
-            $table->text('body');
+            $table->text('excerpt');
+            $table->text('profile');
             $table->timestamps();
         });
     }

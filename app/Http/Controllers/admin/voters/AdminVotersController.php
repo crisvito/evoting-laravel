@@ -111,7 +111,7 @@ class AdminVotersController extends Controller
         $validatedData = $request->validate($rules);
 
         User::where('id', $voter->id)->update($validatedData);
-        return redirect('/admin/dashboard/voters')->with('success', 'Berhasil Mengubah data pemilih <b>' . $request->name . '</b>');;
+        return redirect('/admin/dashboard/voters')->with('success', 'Berhasil Mengubah data pemilih <b>' . $request->name . '</b>');
     }
 
     /**

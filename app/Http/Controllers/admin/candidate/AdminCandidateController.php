@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\admin\candidate;
 
+use App\Console\Kernel;
 use App\Http\Controllers\Controller;
 use App\Models\candidate;
 use Illuminate\Http\Request;
-use App\Models\User;
+use Illuminate\Support\Str;
 
 class AdminCandidateController extends Controller
 {
@@ -30,7 +31,9 @@ class AdminCandidateController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.candidates.create', [
+            'title' => 'Add Candidate'
+        ]);
     }
 
     /**
@@ -41,8 +44,27 @@ class AdminCandidateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_ketua' => ['required', 'string'],
+            'nama_wakil' => ['required', 'string'],
+            'profile' => ['required', 'min:80'],
+            'foto' => ['image', 'max:5000'],
+        ]);
+
+        if ($request->file('foto')) {
+            $myimage = $request->file('foto')->getClientOriginalName();
+            $unique_name = md5($myimage . time()) . $myimage;
+
+            $validatedData['foto']->move(public_path('assets/kandidatFoto'), $unique_name);
+            $validatedData['foto'] = $unique_name;
+        }
+
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->profile), 30);
+        Candidate::create($validatedData);
+
+        return redirect('/admin/dashboard/candidates')->with('success', 'Berhasil Menambah Data Kandidat');
     }
+
 
     /**
      * Display the specified resource.
@@ -65,7 +87,6 @@ class AdminCandidateController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
