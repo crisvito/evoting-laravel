@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\dashboard\AdminDashboardController;
-use App\Http\Controllers\admin\kandidat\AdminCandidateController;
+use App\Http\Controllers\admin\candidate\AdminCandidateController;
 use App\Http\Controllers\admin\voters\AdminVotersController;
 use App\Http\Controllers\warga\dashboard\WargaDashboardController;
 use App\Http\Controllers\public\PublicController;

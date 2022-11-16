@@ -16,8 +16,8 @@ class Vote extends Model
         return $this->hasMany(User::class);
     }
 
-    public function kandidat()
+    public function candidate()
     {
-        return $this->BelongsTo(Kandidat::class);
+        return $this->BelongsTo(Candidate::class);
     }
 }

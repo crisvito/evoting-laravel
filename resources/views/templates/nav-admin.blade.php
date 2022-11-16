@@ -14,7 +14,7 @@
     <li>
         <i class="fa-solid fa-users-line"></i>
         <x-nav-link :href="route('admin.candidates.index')" :active="request()->routeIs('admin.candidates.index')">
-            {{ __('Candidats') }}
+            {{ __('Candidates') }}
         </x-nav-link>
     </li>
     <li>

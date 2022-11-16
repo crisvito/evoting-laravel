@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\admin\kandidat;
+namespace App\Http\Controllers\admin\candidate;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kandidat;
+use App\Models\candidate;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -18,7 +18,8 @@ class AdminCandidateController extends Controller
     {
         return view('admin.candidates.index', [
             'title' => 'Candidates',
-            'voters' => User::all()->where('akses_id', self::WARGA),
+            'candidates' => candidate::all(),
+            // 'candidates' => User::all()->where('akses_id', self::WARGA),
         ]);
     }
 
@@ -46,10 +47,10 @@ class AdminCandidateController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Kandidat  $kandidat
+     * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function show(Kandidat $kandidat)
+    public function show(Candidate $candidate)
     {
         //
     }
@@ -57,10 +58,10 @@ class AdminCandidateController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Kandidat  $kandidat
+     * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kandidat $kandidat)
+    public function edit(Candidate $candidate)
     {
         //
     }
@@ -69,10 +70,10 @@ class AdminCandidateController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kandidat  $kandidat
+     * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kandidat $kandidat)
+    public function update(Request $request, Candidate $candidate)
     {
         //
     }
@@ -80,10 +81,10 @@ class AdminCandidateController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Kandidat  $kandidat
+     * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kandidat $kandidat)
+    public function destroy(Candidate $candidate)
     {
         //
     }

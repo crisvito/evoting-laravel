@@ -20,6 +20,7 @@
                         <thead>
                             <tr class="header-table">
                                 <th>#</th>
+                                <th>Akses</th>
                                 <th>Nik</th>
                                 <th>Nama</th>
                                 <th>Email</th>
@@ -27,31 +28,35 @@
                             </tr>
                         </thead>
                         <tbody class="body-table">
-                            @foreach ($voters as $voter)
+                            @foreach ($candidates as $candidate)
                                 <tr>
-                                    <td class="index-voters">
+                                    <td class="index-candidates">
                                         {{ $loop->iteration }}
                                     </td>
-                                    <td>
-                                        {{ $voter->nik }}
+                                    <td class="index-candidates">
+                                        {{ $candidate->akses->nama }}
                                     </td>
                                     <td>
-                                        {{ $voter->name }}
+                                        {{ $candidate->nik }}
                                     </td>
                                     <td>
-                                        {{ $voter->email }}
+                                        {{ $candidate->name }}
                                     </td>
                                     <td>
-                                        <span class="flex gap-2 text-blue-800">
-                                            <x-secondary-button :href="'/admin/dashboard/voters/' . $voter->nik . '/edit'">
+                                        {{ $candidate->email }}
+                                    </td>
+                                    <td>
+                                        <span class="flex items-center gap-2 text-blue-800">
+                                            <x-secondary-button :href="'/admin/dashboard/candidates/' . $candidate->id . '/edit'">
                                                 Edit
                                             </x-secondary-button>|
-                                            <form method="POST" action="/admin/dashboard/voters/{{ $voter->nik }}">
+                                            <form method="POST"
+                                                action="/admin/dashboard/candidates/{{ $candidate->id }}">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit"
                                                     class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150"
-                                                    onclick="return confirm('Yakin menghapus Data {{ $voter->name }}')">
+                                                    onclick="return confirm('Yakin menghapus Data {{ $candidate->name }}')">
                                                     Delete
                                                 </button>
                                             </form>
