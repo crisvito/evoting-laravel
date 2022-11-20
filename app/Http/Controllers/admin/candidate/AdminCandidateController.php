@@ -74,7 +74,10 @@ class AdminCandidateController extends Controller
      */
     public function show(Candidate $candidate)
     {
-        //
+        return view('admin.candidates.detail', [
+            'title' => 'Candidate ' . $candidate->nama_ketua,
+            'candidate' => $candidate
+        ]);
     }
 
     /**
